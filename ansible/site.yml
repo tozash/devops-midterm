@@ -5,7 +5,7 @@
   tasks:
     - name: Install Node.js and npm
       package:
-        name: 
+        name:
           - nodejs
           - npm
         state: present
@@ -16,20 +16,15 @@
         state: directory
         mode: '0755'
 
-    - name: Copy project files
-      copy:
-        src: "{{ item }}"
+    - name: Copy project files (excluding node_modules and .git)
+      synchronize:
+        src: "{{ playbook_dir }}/.."        # one level up, your project root
         dest: /opt/devops-midterm/
-        mode: '0644'
-      with_items:
-        - src/
-        - package.json
-        - package-lock.json
-      exclude:
-        - node_modules
-        - .git
+        rsync_opts:
+          - "--exclude=node_modules"
+          - "--exclude=.git"
 
-    - name: Install dependencies
+    - name: Install npm dependencies
       npm:
         path: /opt/devops-midterm
         state: present 
