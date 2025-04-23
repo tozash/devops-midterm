@@ -1,0 +1,35 @@
+---
+- name: Setup DevOps Midterm Project
+  hosts: local
+  become: yes
+  tasks:
+    - name: Install Node.js and npm
+      package:
+        name: 
+          - nodejs
+          - npm
+        state: present
+
+    - name: Create application directory
+      file:
+        path: /opt/devops-midterm
+        state: directory
+        mode: '0755'
+
+    - name: Copy project files
+      copy:
+        src: "{{ item }}"
+        dest: /opt/devops-midterm/
+        mode: '0644'
+      with_items:
+        - src/
+        - package.json
+        - package-lock.json
+      exclude:
+        - node_modules
+        - .git
+
+    - name: Install dependencies
+      npm:
+        path: /opt/devops-midterm
+        state: present 
