@@ -1,0 +1,6 @@
+nohup: ignoring input
+
+> devops-midterm@1.0.0 start
+> node src/app.js
+
+Server is running on port 5000
