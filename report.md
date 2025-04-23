@@ -30,10 +30,6 @@ This project demonstrates the implementation of DevOps principles in a simple we
 ![Infrastructure](screenshots/6-infrastructure.png)
 *Screenshot 6: Ansible playbook execution showing successful infrastructure setup.*
 
-### 7. Git Workflow
-![Git Workflow](screenshots/7-git-workflow.png)
-*Screenshot 7: Git commit history showing proper branching and commit message conventions.*
-
 ## Technical Implementation
 
 ### Web Application
